@@ -1,0 +1,401 @@
+<?xml version ='1.0' ?>
+    <robot name='luggageBot'>
+
+    <!-- Origin Point of the Link-->
+    <!-- ParentLink: Connection to the base_joint-->
+    <!-- <link name="world"></link> -->
+   
+    <!-- Important Note:
+        Every Link Should Have A Joint Except World/
+    -->
+
+<!-- BASE -->
+    <link name='base'>
+        <!-- Physical Property-->
+        <!-- Setting the Visual Property-->
+        <visual>
+            <geometry>
+                <box size = '0.75 0.4 0.1'></box>
+            </geometry>
+            <!-- Matrialistic Property-->
+            <matrial name = 'grey'>
+                <!-- rgba(red, green, blue, alpha (transparency 0-1)-->
+                <color rgba = '0.2 0.2 0.2 1' ></color>
+            </matrial>
+        </visual>
+
+        <!-- Setting the inertial Property-->
+        <inertial>
+            <!-- Setting the mass as 1Kg-->
+            <mass value = '1'></mass>
+            <!-- Rotational intertial matrix-->
+            <inertia ixx = '0.01' ixy = '0.0' ixz = '0'
+            iyy = '0.01' iyz = '0' izz = '0.01'></inertia>
+        </inertial>
+
+        <!-- Setting the collision Property-->
+        <!-- Same as Geometry Property-->
+        <collision>
+            <geometry>
+                <box size = '0.75 0.4 0.1'></box>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Joint-link Connection:- World -->
+    <!-- <joint name='base_joint' type='fixed'>
+        <parent link = 'world'></parent>
+        <child link = 'base'></child>
+        <origin xyz= '0 0 0.135' rpy = '0 0 0' ></origin>
+    </joint>  -->
+
+
+<!-- RIGHT WHEEL TO BASE-->
+    <link name = 'wheel_right_link'>
+        <!-- Physical Property-->
+        <!-- Setting the Visual Property-->
+        <visual>
+            <geometry>
+                <cylinder radius = '0.15' length = '0.1'></cylinder>
+            </geometry>
+            <!-- Matrialistic Property-->
+            <matrial name = 'white'>
+                <!-- rgba(red, green, blue, alpha (transparency 0-1)-->
+                <color rgba = '1 1 1 1' ></color>
+            </matrial>
+        </visual>
+
+        <!-- Setting the inertial Property-->
+        <inertial>
+            <!-- Setting the mass as 2Kg-->
+            <mass value = '2'></mass>
+            <!-- Rotational intertial matrix-->
+            <inertia ixx = '0.01' ixy = '0.0' ixz = '0'
+            iyy = '0.01' iyz = '0' izz = '0.01'></inertia>
+        </inertial>
+
+        <!-- Setting the collision Property-->
+        <!-- Same as Geometry Property-->
+        <collision>
+            <geometry>
+                <cylinder radius = '0.15' length = '0.1'></cylinder>
+            </geometry>
+            <!-- Setting contact behaviour -->
+            <!-- mu: Friction coefficients
+                 kp: Stiffness coefficients
+                 kd: Dampening coefficients
+            -->
+            <contact_coefficients mu = '1' kp = '1e+13' kd = '1.0'></contact_coefficients>
+        </collision>
+    </link>
+
+     <!-- Joint-link Connection:- Base -->
+     <!-- type: continuous Rotation or Fixed-->
+     <joint name='wheel_right_joint' type='continuous'>
+        <parent link = 'base'></parent>
+        <child link = 'wheel_right_link'></child>
+        <!-- Rotation in Z axis-->
+        <axis xyz = '0.0 0.0 1.0'></axis>
+        <!-- Position of wheel-->
+        <origin xyz = '0.2 0.25 0.0' rpy = '1.57 0.0 0.0' ></origin>
+    </joint>
+
+
+<!-- LEFT WHEEL TO BASE-->
+    <link name = 'wheel_left_link'>
+        <!-- Physical Property-->
+        <!-- Setting the Visual Property-->
+        <visual>
+            <geometry>
+                <cylinder radius = '0.15' length = '0.1'></cylinder>
+            </geometry>
+            <!-- Matrialistic Property-->
+            <matrial name = 'white'>
+                <!-- rgba(red, green, blue, alpha (transparency 0-1)-->
+                <color rgba = '1 1 1 1' ></color>
+            </matrial>
+        </visual>
+
+        <!-- Setting the inertial Property-->
+        <inertial>
+            <!-- Setting the mass as 2Kg-->
+            <mass value = '2'></mass>
+            <!-- Rotational intertial matrix-->
+            <inertia ixx = '0.01' ixy = '0.0' ixz = '0'
+            iyy = '0.01' iyz = '0' izz = '0.01'></inertia>
+        </inertial>
+
+        <!-- Setting the collision Property-->
+        <!-- Same as Geometry Property-->
+        <collision>
+            <geometry>
+                <cylinder radius = '0.15' length = '0.1'></cylinder>
+            </geometry>
+            <!-- Setting contact behaviour -->
+            <!-- mu: Friction coefficients
+                 kp: Stiffness coefficients
+                 kd: Dampening coefficients
+            -->
+            <contact_coefficients mu = '1' kp = '1e+13' kd = '1.0'></contact_coefficients>
+        </collision>
+    </link>
+
+     <!-- Joint-link Connection:- Base -->
+     <!-- type: continuous Rotation or Fixed-->
+     <joint name='wheel_left_joint' type='continuous'>
+        <parent link = 'base'></parent>
+        <child link = 'wheel_left_link'></child>
+        <!-- Rotation in Z axis-->
+        <axis xyz = '0.0 0.0 1.0'></axis>
+        <!-- Position of wheel-->
+        <origin xyz = '0.2 -0.25 0.0' rpy = '1.57 0.0 0.0' ></origin>
+    </joint>
+
+
+
+
+
+
+<!-- CASTER WHEEL TO BASE-->
+    <link name = 'caster'>
+        <!-- Physical Property-->
+        <!-- Setting the Visual Property-->
+        <visual>
+            <geometry>
+                <sphere radius = '0.08'></sphere>
+            </geometry>
+            <!-- Matrialistic Property-->
+            <matrial name = 'white'></matrial>
+        </visual>
+
+        <!-- Setting the inertial Property-->
+        <inertial>
+            <!-- Setting the mass as 1Kg-->
+            <mass value = '1'></mass>
+            <!-- Rotational intertial matrix-->
+            <inertia ixx = '0.01' ixy = '0.0' ixz = '0'
+            iyy = '0.01' iyz = '0' izz = '0.01'></inertia>
+        </inertial>
+
+        <!-- Setting the collision Property-->
+        <!-- Same as Geometry Property-->
+        <collision>
+            <geometry>
+                <sphere radius = '.08'></sphere>
+            </geometry>
+        </collision>
+    </link>
+
+     <!-- Joint-link Connection:- Base -->
+     <!-- type: Continous Rotation or Fixed-->
+     <joint name='caster_joint' type='continuous'>
+        <parent link = 'base'></parent>
+        <child link = 'caster'></child>
+        <!-- Rotation in Z axis-->
+        <axis xyz = '0 0 1'></axis>
+        <!-- Position of wheel-->
+        <origin xyz = '-0.3 0.0 -0.07' rpy = '0.0 0.0 0.0' ></origin>
+    </joint>
+
+
+
+
+
+<!-- LIDAR SENSOR TO BASE-->
+    <link name = 'lidar'>
+    <!-- Physical Property-->
+    <!-- Setting the Visual Property-->
+    <visual>
+        <geometry>
+            <cylinder radius = '0.1' length = '0.05'></cylinder>
+        </geometry>
+        <!-- Matrialistic Property-->
+        <matrial name = 'white'>
+            <!-- rgba(red, green, blue, alpha (transparency 0-1)-->
+            <color rgba = '1 1 1 1'></color>
+        </matrial>
+    </visual>
+
+    <!-- Setting the inertial Property-->
+    <inertial>
+        <!-- Setting the mass as 0.5Kg-->
+        <mass value = '0.5'></mass>
+        <!-- Rotational intertial matrix-->
+        <inertia ixx = '0.01' ixy = '0.0' ixz = '0'
+            iyy = '0.01' iyz = '0' izz = '0.01'></inertia>
+    </inertial>
+
+    <!-- Setting the collision Property-->
+    <collision>
+        <geometry>
+            <box size ='0.1 0.1 0.1'></box>
+        </geometry>
+    </collision>
+</link>
+
+    <!-- Joint-link Connection:- Base -->
+    <!-- type: Continous Rotation or Fixed-->
+    <joint name='lidar_joint' type='fixed'>
+        <parent link = 'base'></parent>
+        <child link = 'lidar'></child>
+        <!-- Rotation in Z axis-->
+        <axis xyz = '0.0 0.0 1.0'></axis>
+        <!-- Position of wheel-->
+        <origin xyz = '-0.285 0 0.075' rpy = '0.0 0 1.57'></origin>
+    </joint>
+
+
+
+
+<!-- CAMERA SENSOR TO BASE-->
+<link name = 'camera'>
+    <!-- Physical Property-->
+    <!-- Setting the Visual Property-->
+    <visual>
+        <geometry>
+            <box size ='0.1 0.1 0.05'></box>
+        </geometry>
+        <!-- Matrialistic Property-->
+        <matrial name = 'white'>
+            <!-- rgba(red, green, blue, alpha (transparency 0-1)-->
+            <color rgba = '1 1 1 1'></color>
+        </matrial>
+    </visual>
+
+    <!-- Setting the inertial Property-->
+    <inertial>
+        <!-- Setting the mass as 0.1Kg-->
+        <mass value = '0.1'></mass>
+        <!-- Rotational intertial matrix-->
+        <inertia ixx = '0.01' ixy = '0.0' ixz = '0'
+            iyy = '0.01' iyz = '0' izz = '0.01'></inertia>
+    </inertial>
+
+    <!-- Setting the collision Property-->
+    <!-- Same as Geometry Property-->
+    <collision>
+        <geometry>
+            <box size ='0.1 0.1 0.05'></box>
+        </geometry>
+    </collision>
+</link>
+
+    <!-- Joint-link Connection:- Base -->
+    <!-- type: Continous Rotation or Fixed-->
+    <joint name='camera_joint' type='fixed'>
+        <parent link = 'base'></parent>
+        <child link = 'camera'></child>
+        <!-- Rotation in Z axis-->
+        <axis xyz = '0.0 0.0 1.0'></axis>
+        <!-- Position of wheel-->
+        <origin rpy = '0 0.0 3.14' xyz = '-0.35 0 0.01' ></origin>
+    </joint>
+
+
+<!-- Setting the color for the robot-->
+<gazebo reference="base">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo reference="wheel_left_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="wheel_right_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="caster">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo reference="lidar">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="camera">
+    <material>Gazebo/Red</material>
+</gazebo>
+
+
+<!-- Differential Drive Controller-->
+<gazebo>
+    <plugin name = 'differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <rightJoint>wheel_right_joint</rightJoint>
+        <leftJoint>wheel_left_joint</leftJoint>
+        <legacyMode>false</legacyMode>
+
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <!-- Right wheel 0.25, Left wheel -0.25, Distance = 0.5-->
+        <wheelSeperation>0.5</wheelSeperation>
+        <wheelDiameter>0.07</wheelDiameter>
+        <publishWheelJointState>true</publishWheelJointState>
+    </plugin>
+</gazebo>
+
+
+<!-- LIDAR SENSOR-->
+<gazebo reference="lidar">
+    <sensor type="ray" name="head_hokuyo_sensor" >
+    <visualize>true</visualize>
+    <!-- Message PER SECOND-->
+    <update_rate>40</update_rate>
+   
+    <!-- Ray Scanned-->
+      <ray>
+        <scan>
+          <horizontal>  
+            <!-- Number of Sample-->
+            <samples>360</samples>
+            <min_angle>0.00</min_angle>
+            <max_angle>3.14</max_angle>
+            <resolution>1</resolution>
+          </horizontal>
+        </scan>
+        <!-- Range Defining for Ray Scan-->
+        <range>
+          <min>0.120</min>
+          <max>3.5</max>
+          <resolution>0.015</resolution>
+        </range>
+      </ray>
+
+
+        <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_head_hokuyo_controller">    
+            <topicName>/rrbot/laser/scan</topicName>
+            <frame_name>lidar</frame_name>
+        </plugin>
+    </sensor>
+</gazebo>
+
+<gazebo reference="camera">
+    <sensor type="camera" name="camera_sensor">
+        <update_rate>30.0</update_rate>
+        <camera>
+            <horizontal_fov>1.57079632679</horizontal_fov>
+            <image>
+                <format>R8G8B8</format>
+                <width>1020</width>
+                <height>1020</height>
+            </image>
+            <clip>
+                <near>0.01</near>
+                <far>100</far>
+            </clip>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>30.0</updateRate>
+            <cameraName>arm_sensor/camera</cameraName>
+            <imageTopicName>/camera/image_raw</imageTopicName>
+            <cameraInfoTopicName>/camera/camera_info</cameraInfoTopicName>
+            <frameName>camera</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+        </plugin>
+    </sensor>
+</gazebo>
+ 
+ 
+
+
+</robot>

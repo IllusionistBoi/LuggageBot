@@ -1,0 +1,26 @@
+<launch>
+    <arg name="gui" default="true"/>
+    <arg name="debug" default="false"/>
+    <arg name="verbose" default="true"/>
+    <arg name="paused" default="false"/>
+    <arg name="headless" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="world" default="/home/ronit/ros_starter_ws/src/Mask_RCNN/launchFile/world/luggageBot_cylinder.world"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="world_name" value="$(arg world)"/>
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="verbose" value="$(arg verbose)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="headless" value="$(arg headless)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    </include>
+
+    <param name = 'robot_description' textfile = 'models/luggageBot/luggageBot.urdf'></param>
+    <node name = 'spawn_urdf' pkg = 'gazebo_ros' type = 'spawn_model' 
+    args = '-param robot_description -urdf -model luggageBot'></node>
+
+    <node name = 'robot_state_publisher' pkg = 'robot_state_publisher' type='robot_state_publisher'> </node>
+    
+</launch>

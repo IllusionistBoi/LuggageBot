@@ -1,0 +1,8 @@
+prefix=/home/ronit/ros_starter_ws/devel
+
+Name: gazebo_sfm_plugin
+Description: Description of gazebo_sfm_plugin
+Version: 1.0.0
+Cflags: -I/home/ronit/ros_starter_ws/src/gazebo_sfm_plugin-master/include
+Libs: -L${prefix}/lib -lPedestrianSFMPlugin
+Requires: gazebo_ros roscpp

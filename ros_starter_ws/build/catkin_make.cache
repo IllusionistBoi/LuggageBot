@@ -1,0 +1,2 @@
+gazebo_sfm_plugin-master:ronit_package
+-DCATKIN_DEVEL_PREFIX=/home/ronit/ros_starter_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ronit/ros_starter_ws/install -G Unix Makefiles

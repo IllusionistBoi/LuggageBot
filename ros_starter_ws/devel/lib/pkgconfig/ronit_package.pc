@@ -1,0 +1,8 @@
+prefix=/home/ronit/ros_starter_ws/devel
+
+Name: ronit_package
+Description: Description of ronit_package
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -20,6 +20,9 @@ Paste this command in `.bashrc` EOD file . This file is located inside home, und
 This command is used for linking the `.bashrc` to `ROS Noetic`. If above Instructions is not performed, then when executing ROS commands, we need to execute above command everytime inside terminal before we run ROS commands.
 
 ## Instructions
+
+Download https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5 & Move into -> ros_starter_ws\src\Mask_RCNN\scripts Folder
+
 Change the Paths In the mentioned directory below to the path
 
 > `scripts/follow_person.py` located at `line number 16,17 and 18`
